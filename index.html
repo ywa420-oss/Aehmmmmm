@@ -519,6 +519,14 @@
                     </span>
                     <span class="button-text">مفضلتي</span>
                 </button>
+                
+                 <button class="grid-button" onclick="openModal('warningsPunishments')">
+                    <span class="button-icon" style="color: #dc3545;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </span>
+                    <span class="button-text">الإنذارات والغيابات</span>
+                </button>
+                
                 <button class="grid-button" onclick="openModal('settings')">
                     <span class="button-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1.51-1V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -555,10 +563,10 @@
         
         <footer class="credits">
             <strong>جميع حقوق الملكية محفوظة لـ:</strong>
-            <span class="credit-line">طلاب قسم الالكترونيك والسيطرة</span>
-            <span class="credit-line">المبرمج: ايهم فراس جمال</span>
-            <span class="credit-line">المساعد: حسين علي دنيف</span>
-            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">بإشراف: المهندسة مياس حارث</span>
+            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">اشراف : المهندسة مياس حارث</span>
+            <span class="credit-line">المبرمج : ايهم فراس جمال</span>
+            <span class="credit-line">المساعد : حسين علي دنيف</span>
+            <span class="credit-line" style="font-weight: 800; color: var(--primary-color);">قسم الكترونيك والسيطرة</span>
         </footer>
     </div>
     
@@ -598,6 +606,11 @@
             </p>
         </div>
     </div>
+    
+    <div id="warningsPunishments" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('warningsPunishments')">&times;</span>
+            <h2><span style="font-size: 1.5rem; color: #dc3545; margin-left: 
     
     <div id="technicalSupport" class="modal">
         <div class="modal-content">
@@ -760,6 +773,7 @@
                     5. استخدم أيقونة **"👤"** للوصول إلى بيانات حسابك. <br>
                     6. استخدم أيقونة **"🌙"** لتبديل وضع العرض.
                     7. استخدم زر **"🤖"** للوصول إلى **المساعد الذكي** لحل الأسئلة.
+                    8. استخدم زر **"⚠️"** للدخول إلى سجل **الإنذارات والغيابات** المشترك.
                 </p>
             </div>
         </div>
@@ -895,10 +909,30 @@
 
         const vocationalSections = {
             elec: { name: "قسم الكهرباء", link: officialLink, stages: {
-                // تم تحديث الأسماء التخصصية لتعكس التسميات القياسية لملء الفراغات التي لم يتم تزويدها بكتب جديدة.
-                'elec_1': { name: stageNames['1'], books: [...generalSubjects['1'], createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الأول", "إصدار 2024"), createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الأول", "إصدار 2024")] },
-                'elec_2': { name: stageNames['2'], books: [...generalSubjects['2'], createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثاني", "إصدار 2024"), createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثاني", "إصدار 2024")] },
-                'elec_3': { name: stageNames['3'], books: [...generalSubjects['3'], createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثالث", "إصدار 2024"), createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثالث", "إصدار 2024")] }
+                'elec_1': { name: stageNames['1'], books: [
+                    ...generalSubjects['1'],
+                    // العلوم الصناعية الكهربائية - المرحلة الأولى
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1hHiKutlIOVzBWHGoHYFgxY3QbrxnSpgv/view?usp=drivesdk"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الأول", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الأولى (الرابط المطلوب)
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1VvSKfj5uDh9jWcMS6Z54b85F5StLMcYM/view?usp=drivesdk"), 
+                ] },
+                'elec_2': { name: stageNames['2'], books: [
+                    ...generalSubjects['2'],
+                    // العلوم الصناعية الكهربائية - المرحلة الثانية
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1V3O2fG3Ay0wpRzHu_uTY5EakgsqQI-GA/view?usp=drivesdk"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الثاني", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الثانية
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1UO-jcnm7BhIW7–NkdAcmt2YQkO-JBZ-/view?usp=drivesdk"),
+                ] },
+                'elec_3': { name: stageNames['3'], books: [
+                    ...generalSubjects['3'],
+                    // العلوم الصناعية الكهربائية - المرحلة الثالثة
+                    createSubject("العلوم الصناعية الكهربائية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1nDagm7HFt1lj4vsOsk6_dSYgwBxVGdIG/view?usp=drivesdk"),
+                    createSubject("الرسم الهندسي الكهربائي", "كتاب تطبيقي", "الثالث", "إصدار 2024"),
+                    // التدريب العملي الكهربائي - المرحلة الثالثة
+                    createSubject("التدريب العملي الكهربائي", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1yC8O086OBo66IHPrVQfB0HCHFR41fmYF/view?usp=drivesdk"),
+                ] }
             }},
             elecs: { name: "قسم الإلكترونيك والسيطرة", link: officialLink, stages: {
                 // تحديث كتب الإلكترونيك والسيطرة بالكتب الجديدة المقدمة
@@ -906,9 +940,10 @@
                     ...generalSubjects['1'],
                     // أول إلكترون علوم
                     createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/16JpBfQ_RJyYwqDsUmMdL_NYsayBanaLq/view?usp=drivesdk"),
-                    // الصف الاول الكترونيك والسيطرة (الرسم الصناعي)
-                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/126WyRH3mv8CuI0yrGkeiTgPSHE5G3qL_/view?usp=drivesdk"),
-                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الأول", "إصدار 2024"), 
+                    // الرسم الصناعي الإلكتروني - تم إزالة رابط التدريب العملي منه
+                    createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الأول", "إصدار 2024"), 
+                    // التدريب العملي الإلكتروني - تم إضافة رابط التدريب العملي (مرحلة أولى) المطلوب
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/126WyRH3mv8CuI0yrGkeiTgPSHE5G3qL_/view?usp=drivesdk"), 
                 ] },
                 'elecs_2': { name: stageNames['2'], books: [
                     ...generalSubjects['2'],
@@ -916,7 +951,8 @@
                     createSubject("العلوم الصناعية الإلكترونية", "كتاب تخصصي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MyvqU9lKs3ZfK_aeak4L-mdNUHOqwTn5/view?usp=drivesdk"),
                     // الرسم الصناعي الكترونيك وسيطرة الثاني
                     createSubject("الرسم الصناعي الإلكتروني", "كتاب تطبيقي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1Zl094Z0apla7_ZQPQ01DHs-PUfKccy9G/view?usp=drivesdk"),
-                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الثاني", "إصدار 2024"), 
+                    // التدريب العملي الإلكتروني - تم إضافة رابط التدريب العملي (مرحلة ثانية) المطلوب
+                    createSubject("التدريب العملي الإلكتروني", "كتاب عملي", "الثاني", "إصدار 2024", "https://drive.google.com/file/d/1MB0u1mEz5tgjhRV-gAGZv5dwHRTwF8SR/view?usp=drivesdk"), 
                 ] },
                 'elecs_3': { name: stageNames['3'], books: [
                     ...generalSubjects['3'],
@@ -934,7 +970,8 @@
                     ...generalSubjects['1'],
                     // العلوم تكنلوجيا إعلام الاولى
                     createSubject("العلوم الصناعية لتكنولوجيا الإعلام", "كتاب تخصصي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1OK95pQuOg3z40WyGFONyy-oYhHkRiUDD/view?usp=drivesdk"),
-                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الأول", "إصدار 2024"), 
+                    // الرسم مرحلة أولى تكنلوجيا إعلام (تم التحديث)
+                    createSubject("الرسم الصناعي لتكنولوجيا الإعلام", "كتاب تطبيقي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1imUBO6mxJcQcUhEKEpgs_CQ-Hr1uH3Xu/view?usp=drivesdk"), 
                     // العملي تكنلوجيا إعلام الاول
                     createSubject("التدريب العملي لتكنولوجيا الإعلام", "كتاب عملي", "الأول", "إصدار 2024", "https://drive.google.com/file/d/1HgOdWicSSPoL8YWCj2cqMETpnpW1MVP9/view?usp=drivesdk"),
                 ] },
@@ -980,8 +1017,10 @@
                     ...generalSubjects['3'],
                     // العلوم الاجهزه طبية الصف الثالث مهني 
                     createSubject("العلوم الصناعية للأجهزة الطبية", "كتاب تخصصي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1RFvJKEfKmmDrUimYpd60iVfb05g-hQcQ/view?usp=drivesdk"),
-                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الثالث", "إصدار 2024"), 
-                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الثالث", "إصدار 2024"), 
+                    // رسم مرحلة ثالثه اجهزه طبية (تم التحديث)
+                    createSubject("الرسم الصناعي للأجهزة الطبية", "كتاب تطبيقي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1qXF-gEcc1bFPxMQsN8k4eARjNvhqBZNv/view?usp=drivesdk"), 
+                    // العملي اجهزه طبية مرحلة ثالثة (تم التحديث)
+                    createSubject("التدريب العملي للأجهزة الطبية", "كتاب عملي", "الثالث", "إصدار 2024", "https://drive.google.com/file/d/1elVyGMVsHGdTdHFzGhJfS6W2v0Ki2Idy/view?usp=drivesdk"), 
                 ] }
             }},
             general: { name: "المواد العامة المشتركة", link: officialLink, stages: {
@@ -1249,7 +1288,8 @@
                         </button>
                     `;
                     // التعديل: ربط عنصر المفضلة بدالة فتح القارئ
-                    const book = vocationalSections[fav.sectionKey].stages[`${fav.sectionKey}_${fav.stageName.split(' ')[0]}`]?.books.find(b => b.id === fav.id);
+                    const stageNumKey = fav.stageName.split(' ')[0] === 'الثالث' ? '3' : (fav.stageName.split(' ')[0] === 'الثاني' ? '2' : '1');
+                    const book = vocationalSections[fav.sectionKey].stages[`${fav.sectionKey}_${stageNumKey}`]?.books.find(b => b.id === fav.id);
                     if (book && book.link && book.link !== '#') {
                         listItem.onclick = () => openBookInReader(book);
                     }
@@ -1392,6 +1432,29 @@
             // تعيين رابط التضمين في iframe
             bookIframe.src = embedLink;
 
+            // **التعديل لحل مشكلة 404/الأذونات المحتملة في الـ iframe**
+            // يتم فتح الرابط في نافذة جديدة إذا استغرق تحميل الـ iframe وقتاً طويلاً كبديل.
+            bookIframe.onload = function() {
+                // قد لا يعمل هذا الحدث دائماً مع روابط خارجية، لكن لضمان عمل الرابط
+            };
+            
+            // احتياط: فتح الرابط مباشرة في نافذة جديدة في حالة عدم تحميل الـ iframe بشكل صحيح
+            // نفتح نافذة جديدة بعد فترة زمنية قصيرة كحل احتياطي للروابط التي قد لا تُفتح في وضع التضمين
+            setTimeout(() => {
+                // إذا لم يتم تحميل الـ iframe أو كانت هناك مشكلة في العرض، نفتح الرابط في نافذة جديدة
+                // هذا يضمن أن المستخدم يستطيع الوصول للمادة حتى لو فشل القارئ الداخلي
+                const originalLink = book.link.replace('/view?usp=drivesdk', '/view?usp=sharing');
+                bookIframe.onerror = function() {
+                    alert(`فشل تحميل القارئ الرقمي. سيتم فتح المادة "${book.name}" في نافذة متصفح جديدة.`);
+                    window.open(originalLink, '_blank', 'noopener,noreferrer');
+                };
+
+                // إعادة تعيين src لإعادة محاولة التحميل أو لتفعيل onerror
+                bookIframe.src = bookIframe.src; 
+                
+            }, 3000); 
+
+
             // فتح النافذة المنبثقة للقارئ
             openModal('bookReader');
         }
@@ -1460,6 +1523,91 @@
             }, 2000); // تأخير لمدة ثانيتين
         }
         
+        // ===========================================
+        // ==    دالة محاكاة البحث والتعديل (مضافة بناءً على طلبك)    ==
+        // ===========================================
+
+        /**
+         * دالة لمحاكاة البحث عن طالب بالاسم وفتح نافذة تعديل وهمية.
+         * ملاحظة: تتطلب قاعدة بيانات حقيقية للتطبيق الفعلي.
+         */
+        function searchAndEditAbsences() {
+            const studentNameInput = document.getElementById('admin-search-student-name');
+            const studentName = studentNameInput.value.trim();
+            const searchResultElement = document.getElementById('admin-search-result');
+            const sharedList = document.getElementById('shared-warnings-list');
+
+            // قائمة محاكاة للطلاب المسجلين
+            const studentsDatabase = [
+                "أحمد سعيد",
+                "علي محمود",
+                "سارة خليل",
+                "محمد جاسم",
+                "ايهم فراس جمال" // اسم المبرمج للتجربة
+            ];
+
+            if (studentName === "") {
+                searchResultElement.textContent = "الرجاء إدخال اسم الطالب للبحث.";
+                searchResultElement.style.display = 'block';
+                return;
+            }
+            
+            // إخفاء رسالة الخطأ قبل البحث
+            searchResultElement.style.display = 'none';
+
+            // التحقق من وجود الاسم (البحث يجب أن يكون متطابقاً للمحاكاة)
+            const foundStudent = studentsDatabase.find(name => name === studentName);
+
+            if (foundStudent) {
+                // إذا تم العثور على الطالب، افتح نافذة تعديل وهمية
+                const studentRecord = getStudentSimulatedRecord(foundStudent);
+                
+                const newWarning = prompt(`تم العثور على سجل الطالب: ${foundStudent}. 
+سجله الحالي (محاكاة): ${studentRecord.warnings} إنذار و ${studentRecord.absences} يوم غياب.
+
+أدخل الآن أي إنذار أو غياب جديد لهذا الطالب:`);
+
+                if (newWarning !== null && newWarning.trim() !== "") {
+                    // محاكاة إضافة السجل الجديد إلى القائمة المشتركة
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('stage-item');
+                    listItem.style.borderRight = '5px solid #00bcd4'; // لون مختلف للإضافة الجديدة
+                    
+                    // التاريخ الحالي ليوم الإضافة
+                    const today = new Date().toLocaleDateString('ar-IQ', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+                    listItem.innerHTML = `
+                        <span>الطالب: ${foundStudent} (سجل جديد: ${newWarning.trim()})</span>
+                        <span style="color: var(--secondary-color);">تاريخ: ${today}</span>
+                    `;
+                    
+                    // إضافة السجل الجديد في بداية القائمة
+                    sharedList.prepend(listItem);
+                    
+                    alert(`تمت إضافة السجل بنجاح للطالب ${foundStudent}. هذا السجل سيظهر الآن للجميع في القائمة المشتركة.`);
+                } else if (newWarning !== null) {
+                     alert(`لم يتم إضافة سجل جديد للطالب ${foundStudent}.`);
+                }
+                
+            } else {
+                // إذا لم يتم العثور على الطالب
+                searchResultElement.textContent = `لم يتم العثور على الطالب: "${studentName}". يرجى التأكد من كتابة الاسم بالكامل.`;
+                searchResultElement.style.display = 'block';
+            }
+        }
+
+        /**
+         * دالة محاكاة للحصول على سجل طالب
+         */
+        function getStudentSimulatedRecord(name) {
+            // بسيطة لغرض المحاكاة
+            if (name.includes('أحمد سعيد')) return { warnings: 1, absences: 0 };
+            if (name.includes('علي محمود')) return { warnings: 0, absences: 5 };
+            if (name.includes('سارة خليل')) return { warnings: 1, absences: 0 };
+            if (name.includes('ايهم فراس جمال')) return { warnings: 2, absences: 0 };
+            return { warnings: 0, absences: 0 };
+        }
+        
         // تهيئة الوضع الليلي/النهاري وحالة الدخول عند التحميل 
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
@@ -1468,10 +1616,10 @@
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
                 modeIcon.textContent = '☀️';
-                autoDarkModeCheckbox.checked = true;
+                if(autoDarkModeCheckbox) autoDarkModeCheckbox.checked = true;
             } else {
                 modeIcon.textContent = '🌙';
-                autoDarkModeCheckbox.checked = false;
+                if(autoDarkModeCheckbox) autoDarkModeCheckbox.checked = false;
             }
             
             // تحقق من حالة الدخول
@@ -1482,14 +1630,9 @@
                 mainAppContainer.style.display = 'block';
                 
                 // إظهار الأزرار الجانبية عند التحميل إذا كان مسجلاً دخوله
-                modeToggle.style.display = 'flex';
-                profileButton.style.display = 'flex'; 
-                supportFab.style.display = 'flex';
-                
-                // التأكد من إزالة فئة الإخفاء في البداية
-                modeToggle.classList.remove('hidden');
-                profileButton.classList.remove('hidden');
-                supportFab.classList.remove('hidden');
+                if (modeToggle) { modeToggle.style.display = 'flex'; modeToggle.classList.remove('hidden'); }
+                if (profileButton) { profileButton.style.display = 'flex'; profileButton.classList.remove('hidden'); }
+                if (supportFab) { supportFab.style.display = 'flex'; supportFab.classList.remove('hidden'); }
                 
                 updateProfileModal();
             } else {
@@ -1497,9 +1640,9 @@
                 mainAppContainer.style.display = 'none';
                 
                 // التأكد من إخفاء الأزرار عند شاشة الدخول
-                modeToggle.style.display = 'none';
-                profileButton.style.display = 'none';
-                supportFab.style.display = 'none';
+                if (modeToggle) modeToggle.style.display = 'none';
+                if (profileButton) profileButton.style.display = 'none';
+                if (supportFab) supportFab.style.display = 'none';
             }
             
             // تهيئة قائمة الأقسام عند التحميل لأول مرة
@@ -1516,9 +1659,17 @@
         }
         
         // ربط زر تبديل الوضع الخارجي بدالة التبديل
-        modeToggle.addEventListener('click', toggleDarkMode);
+        if (modeToggle) modeToggle.addEventListener('click', toggleDarkMode);
         
-        // ربط دالة المحاكاة بحدث الضغط على زر الإرسال (تم ربطها بزر الإرسال و Enter في الـ HTML)
+        // ربط حقل البحث في نافذة الإدارة بحدث الإدخال
+        const adminSearchInput = document.getElementById('admin-search-student-name');
+        if (adminSearchInput) {
+            adminSearchInput.addEventListener('keyup', (event) => {
+                if (event.keyCode === 13) {
+                    searchAndEditAbsences();
+                }
+            });
+        }
 
     </script>
 </body>
